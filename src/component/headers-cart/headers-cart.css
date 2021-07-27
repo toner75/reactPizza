@@ -1,0 +1,34 @@
+.headers-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 150px;
+    height: 50px;
+
+    background: #FE5F1E;
+    border-radius: 30px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+.headers-cart__divaider {
+    width: 1px;
+    height: 25px;
+    margin: 0 13px;
+
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.headers-cart__quantity {
+    display: flex;
+}
+
+.headers-cart__cart {
+    margin-right: 10px;
+}
+
+

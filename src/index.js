@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const App = () => {
-    return <h2>Hello</h2>
-}
+import App from './component/app/app'
+
+import './index.css'
 
 ReactDOM.render(<App />, document.getElementById('root'));
