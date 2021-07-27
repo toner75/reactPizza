@@ -10,3 +10,12 @@ body {
 body h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
+
+.btn {
+    padding: 15px 30px ;
+
+    border: none;
+    border-radius: 30px;
+
+    cursor: pointer;
+}

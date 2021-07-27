@@ -1,0 +1,24 @@
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+}
+
+.filter__btn {
+    margin-right: 10px;
+
+    background-color: #f9f9f9;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #2c2c2c;
+}
+
+.filter__btn.active {
+    background-color: #282828;
+    color: #fff;
+}
