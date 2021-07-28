@@ -8,8 +8,8 @@ import pizzaImg from '../../assets/img/pizza/1.png'
 const PizzaItem = () => {
     return (
         <li className="pizza-item">
-            <div>
-                <img src={pizzaImg} alt="pizza" />
+            <div >
+                <img className="pizza-item__img" src={pizzaImg} alt="pizza" />
             </div>
             <h2>Чизбургер-пицца</h2>
             <PizzaForm />

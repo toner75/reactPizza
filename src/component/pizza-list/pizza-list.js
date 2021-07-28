@@ -11,6 +11,11 @@ const PizzaList = () => {
                 <PizzaItem />
                 <PizzaItem />
                 <PizzaItem />
+                <PizzaItem />
+                <PizzaItem />
+                <PizzaItem />
+                <PizzaItem />
+                <PizzaItem />
             </ul>
 
         </>
