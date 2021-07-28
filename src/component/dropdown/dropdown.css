@@ -1,4 +1,5 @@
 .dropdown__body {
+    display: none;
     width: 132px;
     height: auto;
 

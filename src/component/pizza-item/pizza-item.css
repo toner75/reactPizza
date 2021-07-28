@@ -1,0 +1,9 @@
+.pizza-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pizza-item h2 {
+    margin-bottom: 20px;
+}
