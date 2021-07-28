@@ -10,6 +10,8 @@
 .header__logo {
     display: flex;
     align-items: center;
+    
+    text-decoration: none;
 }
 
 .header__img {
@@ -31,4 +33,8 @@
     line-height: 19px;
 
     color: #7b7b7b;
+}
+
+.header__cart {
+    text-decoration: none;
 }

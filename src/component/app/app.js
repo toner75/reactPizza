@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { Route } from 'react-router';
+
 import Header from '../header/header';
-import Filter from '../filter/filter';
-import PizzaList from '../pizza-list/pizza-list';
+import HomePage from '../pages/home-page';
+import CartPage from '../pages/cart-page';
 
 import './app.css'
 
@@ -10,8 +12,8 @@ const App = () => {
         <div className="app__body">
             <Header />
             <div className="app__divider"></div>
-            <Filter />
-            <PizzaList />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/cart" component={CartPage} />
         </div>
     )
 };
