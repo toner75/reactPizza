@@ -1,0 +1,55 @@
+.pizza-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pizza-add__value {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    color: #000000;
+}
+
+.btn.pizza-add__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px;
+
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+
+    background: #fe5f1e;
+    border: 1px solid #fe5f1e;
+    border-radius: 30px;
+}
+
+.pizza-add__plus {
+    margin-right: 10px;
+}
+
+.btn.pizza-add__btn.active {
+    color: #eb5a1e;
+
+    background: #ffffff;
+    border: 1px solid #eb5a1e;
+}
+
+.pizza-add__counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 22px;
+    height: 22px;
+    margin-left: 10px;
+
+    font-size: 13px;
+    color: #fff;
+
+    background: #eb5a1e;
+    border-radius: 100%;
+}

@@ -1,8 +1,8 @@
 import React from 'react';
-import PizzaOptions from '../pizza-options/pizza-option';
+
+import PizzaForm from '../pizza-form/pizza-form';
 
 import './pizza-item.css';
-
 import pizzaImg from '../../assets/img/pizza/1.png'
 
 const PizzaItem = () => {
@@ -12,7 +12,7 @@ const PizzaItem = () => {
                 <img src={pizzaImg} alt="pizza" />
             </div>
             <h2>Чизбургер-пицца</h2>
-            <PizzaOptions />
+            <PizzaForm />
         </li>
     );
 

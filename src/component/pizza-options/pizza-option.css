@@ -56,64 +56,9 @@
 }
 
 
-.pizza-options__add {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.btn.pizza-form__btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 10px;
-
-    font-weight: 700;
-    font-size: 16px;
-    color: #FFFFFF;
-
-    background: #FE5F1E;
-    border: 1px solid #FE5F1E;
-    border-radius: 30px;
-}
-
-
-.btn.pizza-form__btn.active {
-    color: #EB5A1E;
-
-    background: #FFFFFF;
-    border: 1px solid #EB5A1E;
-}
 
 
 
-.pizza-form__btn-counter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 22px;
-    height: 22px;
-    margin-left: 10px;
-
-    font-size: 13px;
-    color: #fff;
-
-    background: #EB5A1E;
-    border-radius: 100%;
-}
-
-.plus {
-    margin-right: 10px;
-}
-
-.pizza-add__value {
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 27px;
-    color: #000000;
-}
 
 
 
