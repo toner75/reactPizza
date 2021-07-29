@@ -1,6 +1,6 @@
 import React from "react";
 
-import './cart-header.css';
+import "./cart-header.css";
 
 const CartHeader = () => {
     return (

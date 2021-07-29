@@ -1,0 +1,28 @@
+.cart-item__order {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.cart-item__img {
+    margin-right: 15px;
+}
+
+.cart-item__img img {
+    max-width: 80px;
+}
+
+.cart-item__name {
+    margin-bottom: 3px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    color: #000000;
+}
+
+.cart-item__options {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #8D8D8D;
+}
