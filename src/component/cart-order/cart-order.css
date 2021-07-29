@@ -1,0 +1,21 @@
+.cart-order {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 40px;
+
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+
+    color: #000000;
+}
+
+.cart-order__quantity {
+    font-weight: 700;
+}
+
+.cart-order__sum {
+    font-weight: 700;
+    color: #FE5F1E;
+}
