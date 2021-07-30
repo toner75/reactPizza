@@ -1,7 +1,7 @@
-import React from 'react';
-import PizzaItem from '../pizza-item/pizza-item';
+import React from "react";
+import PizzaItem from "../pizza-item/pizza-item";
 
-import './pizza-list.css';
+import "./pizza-list.css";
 
 const PizzaList = () => {
     return (
@@ -17,9 +17,8 @@ const PizzaList = () => {
                 <PizzaItem />
                 <PizzaItem />
             </ul>
-
         </>
-    )
+    );
 };
 
 export default PizzaList;

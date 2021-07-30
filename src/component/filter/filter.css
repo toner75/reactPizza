@@ -23,3 +23,33 @@
     background-color: #282828;
     color: #fff;
 }
+
+@media(max-width: 1200px) {
+    .filter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media(max-width: 767px) {
+    .filter__btns {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+
+    .filter__btn {
+        margin: 5px;
+    }
+}
+
+@media(max-width: 375px) {
+    .filter {
+        margin: 20px 0 15px;
+
+    }
+
+    .filter__btn {
+        font-size: 12px;
+    }
+}

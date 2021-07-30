@@ -5,7 +5,6 @@ import PizzaAdd from "../pizza-add/pizza-add";
 
 import "./pizza-form.css";
 
-import "./pizza-form.css";
 
 const PizzaForm = () => {
     return (

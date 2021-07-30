@@ -53,3 +53,13 @@
     background: #eb5a1e;
     border-radius: 100%;
 }
+
+@media(max-width: 1365px) {
+    .pizza-add__value {
+        font-size: 20px;
+    }
+    
+    .btn.pizza-add__btn {
+        padding: 7px;
+    }
+}

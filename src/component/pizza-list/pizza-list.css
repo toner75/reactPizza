@@ -1,9 +1,33 @@
 .pizza-list {
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-
     padding: 0;
-
     list-style: none;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+
+    grid-row-gap: 60px;
+    grid-column-gap: 40px;
 }
+
+@media (max-width: 1365px) {
+    .pizza-list {
+        grid-template-columns: repeat(3, 1fr);
+        grid-row-gap: 30px;
+        grid-column-gap: 20px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .pizza-list {
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+}
+
+@media (max-width: 560px) {
+    .pizza-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+

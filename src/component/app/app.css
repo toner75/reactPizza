@@ -1,5 +1,5 @@
 .app__body {
-    width: 1366px;
+    max-width: 1366px;
     margin: 0 auto;
     padding: 45px 50px;
 
@@ -14,3 +14,19 @@
     background-color: #F7F7F7;
 }
 
+@media(max-width: 768px) {
+    .app__body {
+        padding: 20px 25px;
+        border-radius: 0;
+    }
+}
+
+@media(max-width: 500px) {
+
+}
+
+@media(max-width: 375px) {
+    .app__body {
+        padding: 20px 12px;
+    }
+}

@@ -38,3 +38,21 @@
 .header__cart {
     text-decoration: none;
 }
+
+
+@media(max-width: 500px) {
+    .header__title h1 {
+        font-size: 20px;
+        line-height: 20px;
+    }
+    
+    .header__title h3 {
+        display: none;
+    }
+}
+
+@media(max-width: 375px) {
+    .header {
+        margin-bottom: 20px;
+    }
+}

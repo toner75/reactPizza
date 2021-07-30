@@ -1,6 +1,7 @@
 body {
     box-sizing: border-box;
     margin: 40px auto;
+    padding: 0 40px;
     
     font-family: 'Poppins', sans-serif;
     background-color: #FFDF8C;
@@ -18,4 +19,17 @@ body h1, h2, h3, h4, h5, h6 {
     border-radius: 30px;
 
     cursor: pointer;
+}
+
+@media(max-width: 1366px) {
+    .btn {
+        padding: 7px 15px;
+    }
+}
+
+@media(max-width: 768px) {
+    body {
+        padding: 0;
+        margin: 0;
+    }
 }

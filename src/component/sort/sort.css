@@ -32,3 +32,9 @@
     line-height: 17px;
     color: #FE5F1E;
 }
+
+@media(max-width: 1200px) {
+    .sort {
+        margin-top: 30px;
+    }
+}

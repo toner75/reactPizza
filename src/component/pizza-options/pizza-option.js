@@ -5,7 +5,7 @@ import "./pizza-option.css";
 const PizzaOptions = () => {
     return (
         <div className="pizza-options">
-            <div className="pizza-options__selects">
+            <div className="pizza-options__selects dough">
                 <label className="active">
                     <input
                         type="radio"
@@ -22,7 +22,7 @@ const PizzaOptions = () => {
                 </label>
             </div>
 
-            <div className="pizza-options__selects">
+            <div className="pizza-options__selects size">
                 <label className="active">
                     <input
                         type="radio"
