@@ -51,3 +51,26 @@
 
     color: #d0d0d0;
 }
+
+@media(max-width: 600px) {
+    .cart-item__control {
+        width: 100%;
+    }
+
+    .cart-item__btn.del {
+        position: absolute;
+        top: 0;
+        left: 90%;
+    }
+
+    .cart-item__quantity {
+        width: 25%;
+    }
+}
+
+@media(max-width: 400px) {
+    .cart-item__btn {
+        width: 25px;
+        height: 25px;
+    }
+}

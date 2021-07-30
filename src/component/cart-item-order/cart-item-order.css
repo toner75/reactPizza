@@ -24,5 +24,25 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
-    color: #8D8D8D;
+    color: #8d8d8d;
+}
+
+@media (max-width: 600px) {
+    .cart-item__order {
+        width: 100%;
+    }
+
+    .cart-item__name {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cart-item__name {
+        font-size: 16px;
+    }
+
+    .cart-item__options {
+        font-size: 14px;
+    }
 }

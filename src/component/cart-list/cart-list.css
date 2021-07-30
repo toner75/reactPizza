@@ -12,6 +12,11 @@
     font-size: 16px;
     line-height: 19px;
     text-align: center;
+    
+}
+
+.cart-list__nav a {
+    text-decoration: none;
 }
 
 .btn.cart-list__back {
@@ -23,6 +28,7 @@
     padding: 15px 40px;
     
     color: #CACACA;
+    
 
     background: #FFFFFF;
     border: 1px solid #D3D3D3;
@@ -47,4 +53,30 @@
 .cart-list ul {
     list-style: none;
     padding: 0;
+}
+
+@media (max-width: 600px) {
+    .cart-list {
+        margin: 45px auto 65px;
+
+    }
+    .btn.cart-list__back, .btn.cart-list__pay {
+        padding: 15px 25px;
+    }
+
+    .btn.cart-list__back svg {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .cart-list__nav {
+        font-size: 14px;
+    }
+
+    .btn.cart-list__back, .btn.cart-list__pay {
+        padding: 10px 15px;
+    }
+
+    
 }

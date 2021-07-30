@@ -3,7 +3,7 @@
     height: 1px;
     margin-bottom: 30px;
 
-    background: #F4F4F4;
+    background: #f4f4f4;
 }
 
 .cart-item {
@@ -19,7 +19,17 @@
     color: #000000;
 }
 
+@media (max-width: 600px) {
+    .cart-item {
+        flex-direction: column;
+        position: relative;
 
+        font-size: 18px;
+    }
+}
 
-
-
+@media (max-width: 400px) {
+    .cart-item {
+        font-size: 16px;
+    }
+}

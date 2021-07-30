@@ -27,6 +27,6 @@
 
 @media(max-width: 375px) {
     .app__body {
-        padding: 20px 12px;
+        padding: 20px;
     }
 }

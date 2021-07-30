@@ -14,7 +14,6 @@ const CartEmpty = () => {
             </div>
             <div className="cart-empty__subtitle">
                 Вероятней всего, Вы еще не заказывали пиццу.
-                <br />
                 Для заказа перейдите на главную страницу
             </div>
             <img
