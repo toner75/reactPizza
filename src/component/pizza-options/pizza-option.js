@@ -3,49 +3,55 @@ import React from "react";
 import "./pizza-option.css";
 
 const PizzaOptions = ({ types, sizes }) => {
-    const doughClasses = {
-        thin: "not-supported",
-        tradition: "not-supported",
-    };
+    
+    const optionClasses = {
+        thin: {
+            class: "not-supported",
+            checked: false,
+        },
+        tradition: {
+            class: "not-supported",
+            checked: false,
+        },
 
-    const sizeClasses = {
-        size26: "not-supported",
-        size30: "not-supported",
-        size40: "not-supported",
-    };
-
-    const defaultChecked = {
-        thin: false,
-        tradition: false,
-        size26: false,
-        size30: false,
-        size40: false,
+        size26: {
+            class: "not-supported",
+            checked: false,
+        },
+        size30: {
+            class: "not-supported",
+            checked: false,
+        },
+        size40: {
+            class: "not-supported",
+            checked: false,
+        },
     };
 
     const checkSupported = (props) => {
         props.forEach((item) => {
             switch (item) {
                 case 0:
-                    return (doughClasses.thin = "");
+                    return (optionClasses.thin.class = "");
                 case 1:
-                    return (doughClasses.tradition = "");
+                    return (optionClasses.tradition.class = "");
                 case 26:
-                    return (sizeClasses.size26 = "");
+                    return (optionClasses.size26.class = "");
                 case 30:
-                    return (sizeClasses.size30 = "");
+                    return (optionClasses.size30.class = "");
                 case 40:
-                    return (sizeClasses.size40 = "");
+                    return (optionClasses.size40.class = "");
                 default:
                     break;
             }
         });
     };
 
-    const addActiveClass = (classes, cheked) => {
-        for (let key in classes) {
-            if (!classes[key]) {
-                classes[key] = "active";
-                cheked[key] = true;
+    const setDefaultActive = (obj) => {
+        for (let key in obj) {
+            if (!obj[key].class) {
+                obj[key].class = "active";
+                obj[key].checked = true;
                 break;
             }
         }
@@ -54,11 +60,15 @@ const PizzaOptions = ({ types, sizes }) => {
     checkSupported(types);
     checkSupported(sizes);
 
-    addActiveClass(doughClasses, defaultChecked);
-    addActiveClass(sizeClasses, defaultChecked);
+    setDefaultActive(optionClasses);
 
-    const { thin, tradition } = doughClasses;
-    const { size26, size30, size40 } = sizeClasses;
+    const {
+        thin: { class: thin, checked: thinChecked },
+        tradition: { class: tradition, checked: traditionChecked },
+        size26: { class: size26, checked: size26Checked },
+        size30: { class: size30, checked: size30Checked },
+        size40: { class: size40, checked: size40Checked },
+    } = optionClasses;
 
     return (
         <div className="pizza-options">
@@ -68,7 +78,7 @@ const PizzaOptions = ({ types, sizes }) => {
                         type="radio"
                         name="dough"
                         value="thin"
-                        defaultChecked={defaultChecked.thin}
+                        defaultChecked={thinChecked}
                     />
                     <span className="pizza-options__name">Тонкое</span>
                 </label>
@@ -78,7 +88,7 @@ const PizzaOptions = ({ types, sizes }) => {
                         type="radio"
                         name="dough"
                         value="tradition"
-                        defaultChecked={defaultChecked.tradition}
+                        defaultChecked={traditionChecked}
                     />
                     <span className="pizza-options__name">Традиционное</span>
                 </label>
@@ -90,7 +100,7 @@ const PizzaOptions = ({ types, sizes }) => {
                         type="radio"
                         name="size"
                         value="26_sm"
-                        defaultChecked={defaultChecked.size26}
+                        defaultChecked={size26Checked}
                     />
                     <span className="pizza-options__name">26 см.</span>
                 </label>
@@ -100,7 +110,7 @@ const PizzaOptions = ({ types, sizes }) => {
                         type="radio"
                         name="size"
                         value="30_sm"
-                        defaultChecked={defaultChecked.size30}
+                        defaultChecked={size30Checked}
                     />
                     <span className="pizza-options__name">30 см.</span>
                 </label>
@@ -110,7 +120,7 @@ const PizzaOptions = ({ types, sizes }) => {
                         type="radio"
                         name="size"
                         value="40_sm"
-                        defaultChecked={defaultChecked.size40}
+                        defaultChecked={size40Checked}
                     />
                     <span className="pizza-options__name">40 см.</span>
                 </label>
