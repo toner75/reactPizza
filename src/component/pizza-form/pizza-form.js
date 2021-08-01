@@ -6,11 +6,12 @@ import PizzaAdd from "../pizza-add/pizza-add";
 import "./pizza-form.css";
 
 
-const PizzaForm = () => {
+const PizzaForm = ({pizzas}) => {
+    const {price, types, sizes} = pizzas;
     return (
         <form className="pizza-form">
-            <PizzaOptions />
-            <PizzaAdd />
+            <PizzaOptions types={types} sizes={sizes} />
+            <PizzaAdd price={price} />
         </form>
     );
 };

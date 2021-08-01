@@ -3,16 +3,16 @@ import React from 'react';
 import PizzaForm from '../pizza-form/pizza-form';
 
 import './pizza-item.css';
-import pizzaImg from '../../assets/img/pizza/1.png'
 
-const PizzaItem = () => {
+const PizzaItem = ({pizzas}) => {
+    const {imgUrl, name} = pizzas;
     return (
-        <li className="pizza-item">
+        <li  className="pizza-item">
             <div >
-                <img className="pizza-item__img" src={pizzaImg} alt="pizza" />
+                <img className="pizza-item__img" src={imgUrl} alt="pizza" />
             </div>
-            <h2>Чизбургер-пицца</h2>
-            <PizzaForm />
+            <h2>{name}</h2>
+            <PizzaForm pizzas={pizzas} />
         </li>
     );
 
