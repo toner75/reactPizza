@@ -62,7 +62,7 @@
             "types": [0],
             "sizes": [26],
             "price": 19.99,
-            "category": 5,
+            "category": 0,
             "rating": 3.52
         },
 
@@ -73,7 +73,7 @@
             "types": [1],
             "sizes": [26, 30, 40],
             "price": 29.99,
-            "category": 3,
+            "category": 1,
             "rating": 7.52
         },
 
@@ -84,7 +84,7 @@
             "types": [0,1],
             "sizes": [30, 40],
             "price": 22.40,
-            "category": 2,
+            "category": 1,
             "rating": 4.72
         }
 

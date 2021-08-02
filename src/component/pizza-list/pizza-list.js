@@ -11,7 +11,11 @@ import "./pizza-list.css";
 
 class PizzaList extends Component {
     componentDidMount() {
-        const { pizzasRequested, pizzasLoaded, pizzasError } = this.props;
+        const { 
+            pizzasRequested, 
+            pizzasLoaded, 
+            pizzasError 
+        } = this.props;
 
         pizzasRequested();
 
@@ -25,7 +29,12 @@ class PizzaList extends Component {
     }
 
     render() {
-        const { pizzas, loading, error } = this.props;
+        const { 
+            pizzas, 
+            loading, 
+            error, 
+            filter 
+        } = this.props;
 
         if (loading) {
             return <Spinner />;
@@ -35,22 +44,28 @@ class PizzaList extends Component {
             return <ErrorIndicator />;
         }
 
-        const pizzaItems = pizzas.map((items) => (
-            <PizzaItem pizzas={items} key={items.id} />
-        ));
+        const pizzaItems = pizzas.map( (items) => {
+            if (filter.type === "all" || filter.type === items.category) {
+                return <PizzaItem pizzas={items} key={items.id} />;
+            } else return null;
+        });
+
+        let pizzasHeader = filter.name;
+        if (filter.type === 'all') {
+            pizzasHeader += " пиццы";
+        }
 
         return (
             <>
-                <h2 className="pizza-list__header">Все пиццы</h2>
-
+                <h2 className="pizza-list__header">{pizzasHeader}</h2>
                 <ul className="pizza-list">{pizzaItems}</ul>
             </>
         );
     }
 }
 
-const mapStateToProps = ({ pizzas, loading, error }) => {
-    return { pizzas, loading, error };
+const mapStateToProps = ({ pizzas, loading, error, filter }) => {
+    return { pizzas, loading, error, filter };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -18,8 +18,16 @@ const pizzasError = (err) => {
     }
 }
 
+const filterType = (type, name) => {
+    return {
+        type: "FILTER_TYPE",
+        payload: {type, name}
+    }
+}
+
 export {
     pizzasLoaded,
     pizzasRequested,
-    pizzasError
+    pizzasError,
+    filterType
 };
