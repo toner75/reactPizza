@@ -1,35 +1,72 @@
-import React, { useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import store from "../../store";
 
 import PizzaItem from "../pizza-item/pizza-item";
 import getPizzas from "../../services/pizza-service";
-import { pizzasLoaded } from "../actions/actions";
+import { pizzasLoaded, pizzasRequested, pizzasError } from "../actions/actions";
+import ErrorIndicator from "../error-indicator/error-indicator";
+import Spinner from "../spinner/spinner";
 
 import "./pizza-list.css";
 
-const PizzaList = ({ pizzas }) => {
-    useEffect(() => {
-        getPizzas().then((res) => {
-            store.dispatch(pizzasLoaded(res));
-        });
-    }, []);
+class PizzaList extends Component {
+    componentDidMount() {
+        const { pizzasRequested, pizzasLoaded, pizzasError } = this.props;
 
-    const pizzaItems = pizzas.map((items) => (
-        <PizzaItem pizzas={items} key={items.id} />
-    ));
+        pizzasRequested();
 
-    return (
-        <>
-            <h2 className="pizza-list__header">Все пиццы</h2>
+        getPizzas()
+            .then((res) => {
+                pizzasLoaded(res);
+            })
+            .catch((err) => {
+                pizzasError(err);
+            });
+    }
 
-            <ul className="pizza-list">{pizzaItems}</ul>
-        </>
-    );
+    render() {
+        const { pizzas, loading, error } = this.props;
+
+        if (loading) {
+            return <Spinner />;
+        }
+
+        if (error) {
+            return <ErrorIndicator />;
+        }
+
+        const pizzaItems = pizzas.map((items) => (
+            <PizzaItem pizzas={items} key={items.id} />
+        ));
+
+        return (
+            <>
+                <h2 className="pizza-list__header">Все пиццы</h2>
+
+                <ul className="pizza-list">{pizzaItems}</ul>
+            </>
+        );
+    }
+}
+
+const mapStateToProps = ({ pizzas, loading, error }) => {
+    return { pizzas, loading, error };
 };
 
-const mapStateToProps = ({ pizzas }) => {
-    return { pizzas };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        pizzasRequested: () => {
+            dispatch(pizzasRequested());
+        },
+
+        pizzasLoaded: (pizzas) => {
+            dispatch(pizzasLoaded(pizzas));
+        },
+
+        pizzasError: (err) => {
+            dispatch(pizzasError(err));
+        },
+    };
 };
 
-export default connect(mapStateToProps)(PizzaList);
+export default connect(mapStateToProps, mapDispatchToProps)(PizzaList);

@@ -6,12 +6,13 @@ const PizzaAdd = ({price}) => {
     return (
         <div className="pizza-add ">
             <span className="pizza-add__value">от {price} р</span>
-            <button className="btn pizza-add__btn active">
+            <button className="btn pizza-add__btn">
                 <div className="pizza-add__plus">+</div>
                 <div>Добавить</div>
-                <div className="pizza-add__counter">
+                {/* <div className="pizza-add__counter">
                     <div>3</div>
-                </div>
+                </div> or {null} */}
+                
             </button>
         </div>
     );
