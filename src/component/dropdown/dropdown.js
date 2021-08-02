@@ -1,19 +1,18 @@
 import React from 'react';
-
 import './dropdown.css';
 
 const Dropdown = () => {
     return (
         <div className="dropdown__body">
             <ul>
-                <li className="dropdown__item active">
-                    <a href="/">Популярности</a>
+                <li className="dropdown__item">
+                    <button>Популярности</button>
                 </li>
                 <li className="dropdown__item">
-                    <a href="/">Цене</a>
+                    <button >Цене</button>
                 </li>
                 <li className="dropdown__item">
-                    <a href="/">Алфавиту</a>
+                    <button >Алфавиту</button>
                 </li>
             </ul>
 

@@ -6,6 +6,8 @@ const initState = {
         type: "all",
         name: "Все"
     },
+    dropdown: false,
+    sort: "популярности"
 };
 
 const reducer = (state = initState, action) => {
@@ -34,6 +36,24 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 filter: action.payload,
+            };
+
+        case "DROPDOWN_ON":
+            return {
+                ...state,
+                dropdown: true
+            };
+
+        case "DROPDOWN_OFF":
+            return {
+                ...state,
+                dropdown: false
+            };
+
+        case "SORT_TYPE":
+            return {
+                ...state,
+                sort: action.payload
             };
 
         default:

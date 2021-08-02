@@ -25,9 +25,31 @@ const filterType = (type, name) => {
     }
 }
 
+const dropdownOn = () => {
+    return {
+        type: "DROPDOWN_ON"
+    }
+}
+
+const dropdownOff = () => {
+    return {
+        type: "DROPDOWN_OFF"
+    }
+}
+
+const sortType = (type) => {
+    return {
+        type: "SORT_TYPE",
+        payload: type
+    }
+}
+
 export {
     pizzasLoaded,
     pizzasRequested,
     pizzasError,
-    filterType
+    filterType,
+    dropdownOn,
+    dropdownOff,
+    sortType
 };

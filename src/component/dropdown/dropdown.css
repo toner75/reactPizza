@@ -1,5 +1,5 @@
 .dropdown__body {
-    display: none;
+    display: block;
     width: 132px;
     height: auto;
 
@@ -23,19 +23,25 @@
     padding: 10px 0 10px 15px;
     cursor: pointer;
 
+
 }
 
-.dropdown__item.active {
+.dropdown__item:hover {
     background: rgba(254, 95, 30, 0.05);
 }
 
 
-.dropdown__item a {
+.dropdown__item button {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     text-decoration-line: none;
     color: #000000;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
 
 }
 

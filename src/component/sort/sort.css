@@ -31,6 +31,11 @@
     font-size: 14px;
     line-height: 17px;
     color: #FE5F1E;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
 }
 
 @media(max-width: 1200px) {

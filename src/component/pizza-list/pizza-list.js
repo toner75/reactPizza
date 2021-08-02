@@ -44,6 +44,7 @@ class PizzaList extends Component {
             return <ErrorIndicator />;
         }
 
+
         const pizzaItems = pizzas.map( (items) => {
             if (filter.type === "all" || filter.type === items.category) {
                 return <PizzaItem pizzas={items} key={items.id} />;
