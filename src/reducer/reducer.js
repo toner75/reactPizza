@@ -7,7 +7,7 @@ const initState = {
         name: "Все"
     },
     dropdown: false,
-    sort: "популярности"
+    sort: "популярные"
 };
 
 const reducer = (state = initState, action) => {

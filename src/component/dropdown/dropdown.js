@@ -4,7 +4,7 @@ import { sortType, dropdownOff } from "../actions/actions";
 import "./dropdown.css";
 
 const Dropdown = ({ setSort, dropdOff }) => {
-    const sortNames = ["популярности", "цене", "алфавиту"];
+    const sortNames = ["популярные", "дешевые", "дорогие", "по алфавиту"];
 
     const elements = sortNames.map((item, i) => {
         return (
