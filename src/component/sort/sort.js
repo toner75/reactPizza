@@ -10,6 +10,7 @@ import './sort.css';
 const Sort = ( {dropdown, dropOn, dropOff, sort} ) => {
 
     let dropdownElem;
+    let dropdownArrowClass = "sort__dropdown-arrow"
 
     const toggleDropdown = () => {
         dropdown ? dropOff() : dropOn();
@@ -17,14 +18,16 @@ const Sort = ( {dropdown, dropOn, dropOff, sort} ) => {
 
     if (dropdown) {
         dropdownElem = <Dropdown />;
+        dropdownArrowClass += " active"
     } else {
         dropdownElem = null;
     }
+
     
     return (
         <>
             <div className="sort">
-                <img className="sort__dropdown-arrow active" src={arrowImg} alt="arrow-icon" />
+                <img className={dropdownArrowClass} src={arrowImg} alt="arrow-icon" />
                 <div className="sort__title">Сортировать по:</div>
                 <button 
                     className="sort__type" 

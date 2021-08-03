@@ -1,23 +1,41 @@
-import React from 'react';
-import './dropdown.css';
+import React from "react";
+import { connect } from "react-redux";
+import { sortType, dropdownOff } from "../actions/actions";
+import "./dropdown.css";
 
-const Dropdown = () => {
+const Dropdown = ({ setSort, dropdOff }) => {
+    const sortNames = ["популярности", "цене", "алфавиту"];
+
+    const elements = sortNames.map((item, i) => {
+        return (
+            <li
+                key={i}
+                className="dropdown__item"
+                onClick={() => {
+                    setSort(item);
+                    dropdOff();
+                }}>
+                {item}
+            </li>
+        );
+    });
+
     return (
         <div className="dropdown__body">
-            <ul>
-                <li className="dropdown__item">
-                    <button>Популярности</button>
-                </li>
-                <li className="dropdown__item">
-                    <button >Цене</button>
-                </li>
-                <li className="dropdown__item">
-                    <button >Алфавиту</button>
-                </li>
-            </ul>
-
+            <ul>{elements}</ul>
         </div>
     );
 };
 
-export default Dropdown;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setSort: (type) => {
+            dispatch(sortType(type));
+        },
+        dropdOff: () => {
+            dispatch(dropdownOff());
+        },
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Dropdown);
