@@ -3,6 +3,69 @@ import React from "react";
 import "./pizza-option.css";
 
 const PizzaOptions = ({ types, sizes }) => {
+    const typeData = [
+        { name: "Тонкое", value: "thin" },
+        { name: "Традиционное", value: "tradition" },
+    ];
+
+    const sizeData = [
+        { name: "26 см.", value: 26 },
+        { name: "30 см.", value: 30 },
+        { name: "40 см.", value: 40 },
+    ];
+
+    let dFlag = false;
+
+    const doughElements = typeData.map(({ name, value }) => {
+        let activeClass;
+
+        if (types.find((storeValue) => storeValue === value)) {
+            if (!dFlag) {
+                activeClass = "active";
+                dFlag = true;
+            } else activeClass = "";
+
+            return (
+                <label key={value} className={activeClass}>
+                    <input type="radio" name="dough" value={value} />
+                    <span className="pizza-options__name">{name}</span>
+                </label>
+            );
+        } else
+            return (
+                <label key={value} className="not-supported">
+                    <span className="pizza-options__name">{name}</span>
+                </label>
+            );
+    });
+
+    return (
+        <div className="pizza-options">
+            <div className="pizza-options__selects dough">{doughElements}</div>
+
+            <div className="pizza-options__selects size">
+                <label>
+                    <input type="radio" name="size" value="26_sm" />
+                    <span className="pizza-options__name">26 см.</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="size" value="30_sm" />
+                    <span className="pizza-options__name">30 см.</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="size" value="40_sm" />
+                    <span className="pizza-options__name">40 см.</span>
+                </label>
+            </div>
+        </div>
+    );
+};
+
+export default PizzaOptions;
+
+/* const PizzaOptions = ({ types, sizes }) => {
     
     const optionClasses = {
         thin: {
@@ -127,6 +190,4 @@ const PizzaOptions = ({ types, sizes }) => {
             </div>
         </div>
     );
-};
-
-export default PizzaOptions;
+}; */

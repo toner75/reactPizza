@@ -9,7 +9,19 @@ import "./pizza-form.css";
 const PizzaForm = ({pizzas}) => {
     const {price, types, sizes} = pizzas;
     return (
-        <form className="pizza-form">
+        <form 
+            className="pizza-form" 
+            onSubmit={(e) => {
+                e.preventDefault()
+                const formData = new FormData(e.target)
+                const obj = {};
+                formData.forEach((value, key) => {
+                    obj[key] = value;
+                })
+
+                console.log(obj)}
+            }
+        >
             <PizzaOptions types={types} sizes={sizes} />
             <PizzaAdd price={price} />
         </form>
