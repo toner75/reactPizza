@@ -10,6 +10,26 @@ import Spinner from "../spinner/spinner";
 
 import "./pizza-list.css";
 
+const defPrice = (price, defSize) => {
+    let multiplicator = 1;
+
+    switch (defSize) {
+        case 26:
+            multiplicator = 1;
+            break;
+        case 30:
+            multiplicator = 1.5;
+            break;
+        case 40:
+            multiplicator = 2;
+            break;
+        default:
+            break;
+    }
+
+    return Math.floor(price * multiplicator * 100) / 100;
+};
+
 class PizzaList extends Component {
     componentDidMount() {
         const { pizzasRequested, pizzasLoaded, pizzasError } = this.props;
@@ -18,7 +38,14 @@ class PizzaList extends Component {
 
         getPizzas()
             .then((res) => {
-                pizzasLoaded(res);
+                const newPizzas = res.map((item) => {
+                    const {price, sizes} = item
+                    return {
+                        ...item,
+                        price: defPrice(price, sizes[0]),
+                    };
+                });
+                pizzasLoaded(newPizzas);
             })
             .catch((err) => {
                 pizzasError(err);
@@ -36,11 +63,9 @@ class PizzaList extends Component {
             return <ErrorIndicator />;
         }
 
-        const pizzaItems = filterAndSort(pizzas, filter, sort)
-            .map((items) => {
-                return <PizzaItem pizzas={items} key={items.id} />;
-            });
-
+        const pizzaItems = filterAndSort(pizzas, filter, sort).map((items) => {
+            return <PizzaItem pizzas={items} key={items.id} />;
+        });
         return (
             <>
                 <h2 className="pizza-list__header">{filter.name}</h2>

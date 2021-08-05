@@ -44,6 +44,13 @@ const sortType = (type) => {
     }
 }
 
+const calcPrice = (newPizzas) => {
+    return {
+        type: "CALC_PRICE",
+        payload: newPizzas
+    }
+}
+
 export {
     pizzasLoaded,
     pizzasRequested,
@@ -51,5 +58,6 @@ export {
     filterType,
     dropdownOn,
     dropdownOff,
-    sortType
+    sortType,
+    calcPrice
 };
