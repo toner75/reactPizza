@@ -56,7 +56,7 @@ const reducer = (state = initState, action) => {
                 sort: action.payload
             };
 
-        case "CALC_PRICE":
+        case "SET_PRICE":
             return {
                 ...state,
                 pizzas: action.payload

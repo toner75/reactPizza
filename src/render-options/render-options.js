@@ -1,4 +1,4 @@
-const renderOptions = (arrData, storeData, groupName, pizzaName) => {
+const renderOptions = (arrData, storeData, groupName, pizzaName, calcPrice) => {
     let dFlag = false;
     let defCheck = false;
 
@@ -21,6 +21,7 @@ const renderOptions = (arrData, storeData, groupName, pizzaName) => {
                     />
                     <div className="pizza-options__name">{name}</div>
                     <input type="text" name="name" defaultValue={pizzaName} />
+                    <input type="text" name="price" defaultValue={calcPrice} />
                 </label>
             );
         } else

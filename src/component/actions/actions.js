@@ -44,10 +44,10 @@ const sortType = (type) => {
     }
 }
 
-const calcPrice = (newPizzas) => {
+const setPrice = (newArr) => {
     return {
-        type: "CALC_PRICE",
-        payload: newPizzas
+        type: "SET_PRICE",
+        payload: newArr
     }
 }
 
@@ -59,5 +59,5 @@ export {
     dropdownOn,
     dropdownOff,
     sortType,
-    calcPrice
+    setPrice
 };
