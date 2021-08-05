@@ -7,7 +7,7 @@ import "./pizza-form.css";
 
 
 const PizzaForm = ({pizzas}) => {
-    const {price, types, sizes} = pizzas;
+    const {price, types, sizes, name} = pizzas;
     return (
         <form 
             className="pizza-form" 
@@ -21,8 +21,16 @@ const PizzaForm = ({pizzas}) => {
 
                 console.log(obj)}
             }
+            onChange={(e) => {
+                console.log(e.target)
+            }}
+            
+
+
+        
+            
         >
-            <PizzaOptions types={types} sizes={sizes} />
+            <PizzaOptions types={types} sizes={sizes} pizzaName={name} />
             <PizzaAdd price={price} />
         </form>
     );

@@ -25,6 +25,21 @@
 }
 
 .pizza-options__selects label {
+    cursor: pointer;
+}
+
+
+.pizza-options__selects.dough label {
+    width: 50%;
+}
+
+.pizza-options__selects.size label {
+    width: 33.333%;
+}
+
+
+
+.pizza-options__name {
     padding: 10px 0;
 
     text-align: center;
@@ -36,23 +51,14 @@
 
     background: rgba(255, 255, 255, 0.3);
     border-radius: 5px;
-    cursor: pointer;
 }
 
-.pizza-options__selects.dough label {
-    width: 50%;
-}
-
-.pizza-options__selects.size label {
-    width: 33.333%;
-}
-
-.pizza-options__selects label.active {
-    background: #fff;
-}
-
-.pizza-options__selects label.not-supported {
+.pizza-options__name.not-supported {
     background: #f3f3f3;
     color: rgba(44, 44, 44, 0.2);
     cursor: default;
+}
+
+.pizza-options input:checked + .pizza-options__name {
+    background: #fff;
 }

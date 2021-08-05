@@ -1,34 +1,34 @@
-const renderOptions = (arrData, storeData, groupName) => {
+const renderOptions = (arrData, storeData, groupName, pizzaName) => {
     let dFlag = false;
-    let activeClass;
-    let defCheck;
+    let defCheck = false;
 
     const elements = arrData.map(({ name, value }) => {
         if (storeData.find((storeValue) => storeValue === value)) {
             if (!dFlag) {
-                activeClass = "active";
                 defCheck = true;
                 dFlag = true;
             } else {
-                activeClass = "";
                 defCheck = false;
             }
 
             return (
-                <label key={value} className={activeClass}>
+                <label key={value}>
                     <input
                         type="radio"
                         name={groupName}
                         value={value}
                         defaultChecked={defCheck}
                     />
-                    <span className="pizza-options__name">{name}</span>
+                    <div className="pizza-options__name">{name}</div>
+                    <input type="text" name="name" defaultValue={pizzaName} />
                 </label>
             );
         } else
             return (
-                <label key={value} className="not-supported">
-                    <span className="pizza-options__name">{name}</span>
+                <label key={value}>
+                    <div className="pizza-options__name not-supported">
+                        {name}
+                    </div>
                 </label>
             );
     });
