@@ -7,59 +7,79 @@ import PizzaAdd from "../pizza-add/pizza-add";
 
 import "./pizza-form.css";
 
+
 const PizzaForm = ({ pizza, allPizzas, setPrice }) => {
-     
     const { price, types, sizes, name, calcPrice, id } = pizza;
+    console.log(pizza)
     return (
         <form
             className="pizza-form"
             onSubmit={(e) => {
                 e.preventDefault();
-                const formData = new FormData(e.target);
-                const obj = {};
-                formData.forEach((value, key) => {
-                    obj[key] = value;
-                });
-
-                console.log(obj);
-                
+                console.log(name, calcPrice, sizes);
             }}
             onChange={(e) => {
-                const size = +e.target.value;
-                const newPizza = {...pizza, calcPrice: multiplicatorPrice(price, size) }
-
-                const index = allPizzas.findIndex(item => item.id === id )
+                if(e.target.name === 'dough') {
+                    const type = e.target.value
+                    const newPizza = {
+                        ...pizza,
+                        selectedDough: type,
+                    };
+    
+                    const index = allPizzas.findIndex((item) => item.id === id);
+    
+                    const before = allPizzas.slice(0, index);
+                    const after = allPizzas.slice(index + 1);
+    
+                    const newArr = [...before, newPizza, ...after];
+    
+                    setPrice(newArr);
+                    
+                }
+                if (e.target.name === 'size') {
+                    const size = +e.target.value;
+                    const newPizza = {
+                        ...pizza,
+                        calcPrice: multiplicatorPrice(price, size),
+                        selectedSize: size
+                    };
+    
+                    const index = allPizzas.findIndex((item) => item.id === id);
+    
+                    const before = allPizzas.slice(0, index);
+                    const after = allPizzas.slice(index + 1);
+    
+                    const newArr = [...before, newPizza, ...after];
+    
+                    setPrice(newArr);
+                }
 
                 
-
-                const before = allPizzas.slice(0, index);
-                const after = allPizzas.slice(index + 1);
-
-                const newArr = [...before, newPizza, ...after];
-
-                setPrice(newArr)
-
             }}>
-                
-            <PizzaOptions types={types} sizes={sizes} pizzaName={name} />
+            <PizzaOptions
+                types={types}
+                sizes={sizes}
+                pizzaName={name}
+                price={calcPrice}
+            />
+            
             <PizzaAdd price={calcPrice} />
         </form>
     );
 };
 
-const mapStateToProps = ({pizzas}) => {
+const mapStateToProps = ({ pizzas }) => {
     return {
-        allPizzas: pizzas
-        
-    }
-}
+        allPizzas: pizzas,
+    };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
         setPrice: (newArr) => {
             dispatch(setPrice(newArr));
-        }
-    }
-}
+        },
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PizzaForm);

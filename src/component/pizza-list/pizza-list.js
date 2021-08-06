@@ -20,13 +20,15 @@ class PizzaList extends Component {
         getPizzas()
             .then((res) => {
                 const newArr = res.map((item) => {
-                    const {price, sizes} = item
+                    const { price, sizes, types } = item;
                     return {
                         ...item,
-                        calcPrice: multiplicatorPrice(price, sizes[0])
-                    }
-                })
-                
+                        calcPrice: multiplicatorPrice(price, sizes[0]),
+                        selectedSize: sizes[0],
+                        selectedDough: types[0]
+                    };
+                });
+
                 pizzasLoaded(newArr);
             })
             .catch((err) => {
@@ -45,10 +47,10 @@ class PizzaList extends Component {
             return <ErrorIndicator />;
         }
 
-        const pizzaItems = filterAndSort(pizzas, filter, sort)
-            .map((items) => {
-                return <PizzaItem pizza={items} key={items.id} />;
-            });
+        const pizzaItems = filterAndSort(pizzas, filter, sort).map((items) => {
+            
+            return <PizzaItem pizza={items} key={items.id} />;
+        });
 
         return (
             <>
