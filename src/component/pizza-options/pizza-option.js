@@ -1,9 +1,9 @@
 import React from "react";
-import renderOptions from "../../render-options/render-options";
+import createOptions from "../../create-options/create-options";
 
 import "./pizza-option.css";
 
-const PizzaOptions = ({ types, sizes, pizzaName, price }) => {
+const PizzaOptions = ({ types, sizes }) => {
     const doughData = [
         { name: "Тонкое", value: "thin" },
         { name: "Традиционное", value: "tradition" },
@@ -15,16 +15,13 @@ const PizzaOptions = ({ types, sizes, pizzaName, price }) => {
         { name: "40 см.", value: 40 },
     ];
 
-    const doughElements = renderOptions(doughData, types, "dough");
-    const sizeElements = renderOptions(sizeData, sizes, "size");
+    const doughElements = createOptions(doughData, types, "dough");
+    const sizeElements = createOptions(sizeData, sizes, "size");
 
     return (
         <div className="pizza-options">
             <div className="pizza-options__selects dough">{doughElements}</div>
-
             <div className="pizza-options__selects size">{sizeElements}</div>
-            <input type="text" name="name" defaultValue={pizzaName} />
-            <input type="text" name="price" defaultValue={price} />
         </div>
     );
 };

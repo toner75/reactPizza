@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setPrice } from "../actions/actions";
+import { setPrice, selectingPizza } from "../actions/actions";
 import multiplicatorPrice from "../../multiplicator-price.js/multiplicator-price";
 import PizzaOptions from "../pizza-options/pizza-option";
 import PizzaAdd from "../pizza-add/pizza-add";
 
 import "./pizza-form.css";
 
-const upd = (allPizzas, id, newPizza, setPrice) => {
+const upd = (allPizzas, id, newPizza, action) => {
     const index = allPizzas.findIndex((item) => item.id === id);
 
     const newArr = [
@@ -16,7 +16,7 @@ const upd = (allPizzas, id, newPizza, setPrice) => {
         ...allPizzas.slice(index + 1),
     ];
 
-    setPrice(newArr);
+    action(newArr);
 };
 
 const updateSelectedOptions = (e, pizza, allPizzas, id, price, setPrice) => {
@@ -49,14 +49,64 @@ const updateSelectedOptions = (e, pizza, allPizzas, id, price, setPrice) => {
     }
 };
 
-const PizzaForm = ({ pizza, allPizzas, setPrice }) => {
-    const { price, types, sizes, name, calcPrice, id } = pizza;
-    console.log(pizza)
+const PizzaForm = ({
+    pizza,
+    allPizzas,
+    selectedPizzas,
+    setPrice,
+    selectingPizza,
+}) => {
+    const {
+        price,
+        types,
+        sizes,
+        name,
+        calcPrice,
+        id,
+        selectedDough,
+        selectedSize,
+        imgUrl,
+    } = pizza;
+
+    console.log(selectedPizzas);
     return (
         <form
             className="pizza-form"
             onSubmit={(e) => {
                 e.preventDefault();
+                const pizzaOptions = {
+                    id,
+                    imgUrl,
+                    name,
+                    price: calcPrice,
+                    dough: selectedDough,
+                    size: selectedSize,
+                    counter: 1,
+                };
+
+                let checkPizza = selectedPizzas.find(
+                    (item) => item.id === pizzaOptions.id 
+                );
+
+                if (checkPizza) {
+                    const index = selectedPizzas.findIndex(
+                        (item) => item.id === pizzaOptions.id
+                    );
+                    const { counter } = selectedPizzas[index];
+                    const newArr = {
+                        ...selectedPizzas[index],
+                        counter: counter + 1,
+                    };
+                    upd(
+                        selectedPizzas,
+                        pizzaOptions.id,
+                        newArr,
+                        selectingPizza
+                    );
+                } else {
+                    const newArr = [...selectedPizzas, pizzaOptions];
+                    selectingPizza(newArr);
+                }
             }}
             onChange={(e) => {
                 updateSelectedOptions(e, pizza, allPizzas, id, price, setPrice);
@@ -73,9 +123,10 @@ const PizzaForm = ({ pizza, allPizzas, setPrice }) => {
     );
 };
 
-const mapStateToProps = ({ pizzas }) => {
+const mapStateToProps = ({ pizzas, selectedPizzas }) => {
     return {
         allPizzas: pizzas,
+        selectedPizzas,
     };
 };
 
@@ -83,6 +134,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setPrice: (newArr) => {
             dispatch(setPrice(newArr));
+        },
+        selectingPizza: (newArr) => {
+            dispatch(selectingPizza(newArr));
         },
     };
 };

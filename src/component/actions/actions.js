@@ -51,6 +51,13 @@ const setPrice = (newArr) => {
     }
 }
 
+const selectingPizza = (newArr) => {
+    return {
+        type: "SELECTING_PIZZA",
+        payload: newArr
+    }
+}
+
 export {
     pizzasLoaded,
     pizzasRequested,
@@ -59,5 +66,6 @@ export {
     dropdownOn,
     dropdownOff,
     sortType,
-    setPrice
+    setPrice,
+    selectingPizza
 };

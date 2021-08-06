@@ -1,5 +1,6 @@
 const initState = {
     pizzas: [],
+    selectedPizzas: [],
     loading: true,
     error: null,
     filter: {
@@ -60,6 +61,12 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 pizzas: action.payload
+            };
+
+        case "SELECTING_PIZZA":
+            return {
+                ...state,
+                selectedPizzas: action.payload
             };
 
         default:

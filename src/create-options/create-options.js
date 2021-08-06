@@ -1,4 +1,4 @@
-const renderOptions = (arrData, storeData, groupName) => {
+const createOptions = (arrData, storeData, groupName) => {
     let dFlag = false;
     let defCheck = false;
 
@@ -35,4 +35,4 @@ const renderOptions = (arrData, storeData, groupName) => {
     return elements;
 };
 
-export default renderOptions;
+export default createOptions;
