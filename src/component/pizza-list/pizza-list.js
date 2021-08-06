@@ -25,7 +25,7 @@ class PizzaList extends Component {
                         ...item,
                         calcPrice: multiplicatorPrice(price, sizes[0]),
                         selectedSize: sizes[0],
-                        selectedDough: types[0]
+                        selectedDough: types[0],
                     };
                 });
 
@@ -48,7 +48,6 @@ class PizzaList extends Component {
         }
 
         const pizzaItems = filterAndSort(pizzas, filter, sort).map((items) => {
-            
             return <PizzaItem pizza={items} key={items.id} />;
         });
 

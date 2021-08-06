@@ -68,7 +68,6 @@ const PizzaForm = ({
         imgUrl,
     } = pizza;
 
-    console.log(selectedPizzas);
     return (
         <form
             className="pizza-form"
@@ -81,32 +80,10 @@ const PizzaForm = ({
                     price: calcPrice,
                     dough: selectedDough,
                     size: selectedSize,
-                    counter: 1,
                 };
 
-                let checkPizza = selectedPizzas.find(
-                    (item) => item.id === pizzaOptions.id 
-                );
-
-                if (checkPizza) {
-                    const index = selectedPizzas.findIndex(
-                        (item) => item.id === pizzaOptions.id
-                    );
-                    const { counter } = selectedPizzas[index];
-                    const newArr = {
-                        ...selectedPizzas[index],
-                        counter: counter + 1,
-                    };
-                    upd(
-                        selectedPizzas,
-                        pizzaOptions.id,
-                        newArr,
-                        selectingPizza
-                    );
-                } else {
-                    const newArr = [...selectedPizzas, pizzaOptions];
-                    selectingPizza(newArr);
-                }
+                const newArr = [...selectedPizzas, pizzaOptions];
+                selectingPizza(newArr);
             }}
             onChange={(e) => {
                 updateSelectedOptions(e, pizza, allPizzas, id, price, setPrice);
