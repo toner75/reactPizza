@@ -26,6 +26,7 @@ class PizzaList extends Component {
                         calcPrice: multiplicatorPrice(price, sizes[0]),
                         selectedSize: sizes[0],
                         selectedDough: types[0],
+                        pizzaAdd: false
                     };
                 });
 
@@ -60,8 +61,8 @@ class PizzaList extends Component {
     }
 }
 
-const mapStateToProps = ({ pizzas, loading, error, filter, sort }) => {
-    return { pizzas, loading, error, filter, sort };
+const mapStateToProps = ({ pizzas, loading, error, filter, sort, pizzaAdd }) => {
+    return { pizzas, loading, error, filter, sort, pizzaAdd };
 };
 
 const mapDispatchToProps = (dispatch) => {

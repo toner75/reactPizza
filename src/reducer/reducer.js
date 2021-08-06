@@ -69,6 +69,14 @@ const reducer = (state = initState, action) => {
                 selectedPizzas: action.payload
             };
 
+        case "PIZZA_ADD":
+            return {
+                ...state,
+                pizzas: action.payload
+            };
+
+        
+
         default:
             return state;
     }
