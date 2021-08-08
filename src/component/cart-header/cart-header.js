@@ -1,8 +1,10 @@
 import React from "react";
+import { clearCart } from "../actions/actions";
+import { connect } from "react-redux";
 
 import "./cart-header.css";
 
-const CartHeader = () => {
+const CartHeader = ({clearCart}) => {
     return (
         <div className="cart-header">
             <div className="cart-header__logo">
@@ -38,7 +40,7 @@ const CartHeader = () => {
                 </div>
                 <div className="cart-header__title">Корзина</div>
             </div>
-            <button className="cart-header__clearing">
+            <button className="cart-header__clearing" onClick={clearCart}>
                 <div className="cart-header__trash-img">
                     <svg
                         width="25"
@@ -80,4 +82,12 @@ const CartHeader = () => {
     );
 };
 
-export default CartHeader;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        clearCart: () => {
+            dispatch(clearCart());
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CartHeader);
