@@ -4,9 +4,9 @@ import CartItemOrder from "../cart-item-order/cart-item-order";
 
 import "./cart-item.css";
 
-const CartItem = ({ pizzas }) => {
-    const { imgUrl, name, dough, size, price } = pizzas[0];
-    const counter = pizzas.length
+const CartItem = ({ pizzasGroup, allPizzas }) => {
+    const { imgUrl, name, dough, size } = pizzasGroup[0];
+    const counter = pizzasGroup.length
     return (
         <li>
             <div className="cart-item__divider" />
@@ -18,7 +18,7 @@ const CartItem = ({ pizzas }) => {
                     dough={dough}
                     size={size}
                 />
-                <CartItemControl counter={counter} price={price} />
+                <CartItemControl counter={counter} pizzasGroup={pizzasGroup} />
             </div>
         </li>
     );

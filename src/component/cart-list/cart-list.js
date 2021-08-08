@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import CartHeader from "../cart-header/cart-header";
 import CartItem from "../cart-item/cart-item";
 import CartOrder from "../cart-order/cart-order";
+import { cartPizzas } from "../actions/actions";
 
 import "./cart-list.css";
 
@@ -24,11 +25,9 @@ const transformPizzasArr = (pizzas) => {
     return arr1;
 };
 
-const CartList = ({ pizzas }) => {
-    console.log('pizzas', pizzas)
-
+const CartList = ({ pizzas, cartPizzas }) => {
     const pizzasArr = transformPizzasArr(pizzas);
-    console.log('pizzasArr', pizzasArr)
+    cartPizzas(pizzasArr);
 
     const totalCounter = pizzas.length;
     const totalPrice =
@@ -37,8 +36,9 @@ const CartList = ({ pizzas }) => {
 
     const pizzasElements = pizzasArr.map((item) => (
         <CartItem
-            pizzas={item}
-            key={`${item[0].id} ${item[0].size} ${item[0].dough}`}
+            pizzasGroup={item}
+            allPizzas={pizzas}
+            key={`${item[0].id}${item[0].size}${item[0].dough}`}
         />
     ));
 
@@ -87,4 +87,12 @@ const mapStateToProps = ({ selectedPizzas }) => {
     };
 };
 
-export default connect(mapStateToProps)(CartList);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        cartPizzas: (newArr) => {
+            dispatch(cartPizzas(newArr));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartList);

@@ -1,6 +1,7 @@
 const initState = {
     pizzas: [],
     selectedPizzas: [],
+    cartPizzas: [],
     loading: true,
     error: null,
     filter: {
@@ -78,6 +79,13 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 selectedPizzas: [],
+            };
+        }
+
+        case "CART_PIZZAS": {
+            return {
+                ...state,
+                cartPizzas: action.payload,
             };
         }
 
