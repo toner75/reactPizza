@@ -1,56 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import CartHeader from "../cart-header/cart-header";
 import CartItem from "../cart-item/cart-item";
 import CartOrder from "../cart-order/cart-order";
-import { cartPizzas } from "../actions/actions";
 
 import "./cart-list.css";
 
-const transformPizzasArr = (pizzas) => {
-    const map = pizzas.reduce((r, item) => {
-        const { id, size, dough } = item;
-        const index = `${id}${size}${dough}`;
-        r[index] = r[index] || [];
-        r[index].push(item);
-        return r;
-    }, {});
-
-    const arr1 = [];
-    for (const key in map) {
-        arr1.push(map[key]);
-    }
-
-    return arr1;
-};
-
-const CartList = ({ pizzas, cartPizzas }) => {
-    const pizzasArr = transformPizzasArr(pizzas);
-    cartPizzas(pizzasArr);
-
-    const totalCounter = pizzas.length;
-    const totalPrice =
-        Math.floor(pizzas.reduce((sum, { price }) => (sum += price), 0) * 100) /
-        100;
-
-    const pizzasElements = pizzasArr.map((item) => (
-        <CartItem
-            pizzasGroup={item}
-            allPizzas={pizzas}
-            key={`${item[0].id}${item[0].size}${item[0].dough}`}
-        />
-    ));
-
+const CartList = () => {
     return (
         <div className="cart-list">
             <CartHeader />
             <ul>
-                {pizzasElements}
-                <CartOrder
-                    totalCounter={totalCounter}
-                    totalPrice={totalPrice}
-                />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartOrder />
             </ul>
             <div className="cart-list__nav">
                 <Link to="/">
@@ -81,18 +45,4 @@ const CartList = ({ pizzas, cartPizzas }) => {
     );
 };
 
-const mapStateToProps = ({ selectedPizzas }) => {
-    return {
-        pizzas: selectedPizzas,
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        cartPizzas: (newArr) => {
-            dispatch(cartPizzas(newArr));
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartList);
+export default CartList;

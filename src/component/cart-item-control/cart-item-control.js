@@ -2,23 +2,20 @@ import React from "react";
 
 import "./cart-item-control.css";
 
-const CartItemControl = ({ counter, pizzasGroup }) => {
-    const { price } = pizzasGroup[0];
-    const totalPrice = Math.floor(counter * price * 100) / 100;
-
+const CartItemControl = () => {
     return (
         <div className="cart-item__control">
             <div className="cart-item__quantity">
                 <button className="cart-item__btn">
                     <div className="minus" />
                 </button>
-                <span className="cart-item__counter">{counter}</span>
+                <span className="cart-item__counter">2</span>
                 <button className="cart-item__btn">
                     <div>+</div>
                 </button>
             </div>
 
-            <div className="cart-item__price">{totalPrice} р</div>
+            <div className="cart-item__price">770 р</div>
 
             <button className="cart-item__btn del">
                 <div>+</div>

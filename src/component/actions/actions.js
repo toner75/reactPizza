@@ -65,19 +65,6 @@ const pizzaAdd = (newArr) => {
     };
 };
 
-const clearCart = () => {
-    return {
-        type: "CLEAR_CART"
-    }
-}
-
-const cartPizzas = (newArr) => {
-    return {
-        type: "CART_PIZZAS",
-        payload: newArr
-    }
-}
-
 
 export {
     pizzasLoaded,
@@ -90,7 +77,5 @@ export {
     setPrice,
     selectingPizza,
     pizzaAdd,
-    clearCart,
-    cartPizzas
     
 };
