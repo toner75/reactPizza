@@ -3,14 +3,16 @@ import { connect } from "react-redux";
 
 import "./headers-cart.css";
 
-const HeaderCart = ({selectedPizzas}) => {
-    const counter = selectedPizzas.length
+const HeaderCart = ({ selectedPizzas }) => {
+    let totalCounter = 0;
     let totalPrice = 0;
-    selectedPizzas.forEach(item => {
-        totalPrice += item.price
+
+    selectedPizzas.forEach(({ counter, price }) => {
+        totalCounter += counter;
+        totalPrice += counter * price;
     });
 
-    totalPrice = Math.floor(totalPrice * 100) / 100
+    totalPrice = Math.floor(totalPrice * 100) / 100;
 
     return (
         <div className="headers-cart">
@@ -47,14 +49,14 @@ const HeaderCart = ({selectedPizzas}) => {
                         />
                     </svg>
                 </div>
-                <div className="headers-cart__counter">{counter}</div>
+                <div className="headers-cart__counter">{totalCounter}</div>
             </div>
         </div>
     );
 };
 
-const mapStateToProps = ({selectedPizzas}) => {
-    return {selectedPizzas}
-}
+const mapStateToProps = ({ selectedPizzas }) => {
+    return { selectedPizzas };
+};
 
 export default connect(mapStateToProps)(HeaderCart);

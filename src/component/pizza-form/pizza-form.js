@@ -49,53 +49,6 @@ const changeHandler = (e, pizza, allPizzas, id, price, setPrice) => {
     }
 };
 
-const submitHandler = (
-    e,
-    id,
-    imgUrl,
-    name,
-    calcPrice,
-    selectedDough,
-    selectedSize,
-    selectedPizzas,
-    selectingPizza
-) => {
-    e.preventDefault();
-    console.log(selectedPizzas)
-    const pizzaOptions = {
-        id,
-        imgUrl,
-        name,
-        price: calcPrice,
-        dough: selectedDough,
-        size: selectedSize,
-        counter: 1
-    };
-    const {id:optId, dough:optDough, size:optSize} = pizzaOptions;
-
-    const index = selectedPizzas.findIndex((item) => `${item.id}${item.dough}${item.size}` === `${optId}${optDough}${optSize}` );
-
-
-    if(index !== -1) {
-        const newPizza = {...selectedPizzas[index], counter: selectedPizzas[index].counter + 1  }
-
-    const newArr = [
-        ...selectedPizzas.slice(0, index),
-        newPizza,
-        ...selectedPizzas.slice(index + 1),
-    ];
-
-    selectingPizza(newArr);
-        
-    } else {
-        const newArr = [...selectedPizzas, pizzaOptions];
-        selectingPizza(newArr);
-    }
-
-
-    
-};
-
 const pizzaAddUI = (pizza, allPizzas, id, pizzaAdd) => {
     const newPizza = { ...pizza, pizzaAdd: true };
     updatePizzas(allPizzas, id, newPizza, pizzaAdd);
@@ -130,17 +83,47 @@ const PizzaForm = ({
         <form
             className="pizza-form"
             onSubmit={(e) => {
-                submitHandler(
-                    e,
+                e.preventDefault();
+                const pizzaOptions = {
                     id,
                     imgUrl,
                     name,
-                    calcPrice,
-                    selectedDough,
-                    selectedSize,
-                    selectedPizzas,
-                    selectingPizza
+                    price: calcPrice,
+                    dough: selectedDough,
+                    size: selectedSize,
+                    counter: 1,
+                };
+
+                const {
+                    id: optId,
+                    dough: optDough,
+                    size: optSize,
+                } = pizzaOptions;
+
+                const index = selectedPizzas.findIndex(
+                    ({ id, dough, size }) =>
+                        `${id}${dough}${size}` ===
+                        `${optId}${optDough}${optSize}`
                 );
+
+                if (index !== -1) {
+                    const { counter } = selectedPizzas[index];
+                    const newPizza = {
+                        ...selectedPizzas[index],
+                        counter: counter + 1,
+                    };
+
+                    const newArr = [
+                        ...selectedPizzas.slice(0, index),
+                        newPizza,
+                        ...selectedPizzas.slice(index + 1),
+                    ];
+
+                    selectingPizza(newArr);
+                } else {
+                    const newArr = [...selectedPizzas, pizzaOptions];
+                    selectingPizza(newArr);
+                }
                 pizzaAddUI(pizza, allPizzas, id, pizzaAdd);
             }}
             onChange={(e) => {
