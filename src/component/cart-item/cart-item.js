@@ -4,14 +4,20 @@ import CartItemOrder from "../cart-item-order/cart-item-order";
 
 import "./cart-item.css";
 
-const CartItem = () => {
+const CartItem = ({ pizza }) => {
+    const { name, size, dough, imgUrl, counter, price } = pizza;
     return (
         <li>
             <div className="cart-item__divider" />
 
             <div className="cart-item">
-                <CartItemOrder />
-                <CartItemControl />
+                <CartItemOrder
+                    name={name}
+                    imgUrl={imgUrl}
+                    size={size}
+                    dough={dough}
+                />
+                <CartItemControl counter={counter} price={price} />
             </div>
         </li>
     );

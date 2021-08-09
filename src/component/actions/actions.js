@@ -65,6 +65,11 @@ const pizzaAdd = (newArr) => {
     };
 };
 
+const clearCart = () => {
+    return {
+        type: "CLEAR_CART",
+    };
+};
 
 export {
     pizzasLoaded,
@@ -77,5 +82,5 @@ export {
     setPrice,
     selectingPizza,
     pizzaAdd,
-    
+    clearCart,
 };

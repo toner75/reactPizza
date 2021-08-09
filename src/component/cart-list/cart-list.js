@@ -6,14 +6,21 @@ import CartOrder from "../cart-order/cart-order";
 
 import "./cart-list.css";
 
-const CartList = () => {
+const CartList = ({ selectedPizzas }) => {
+    const elements = selectedPizzas.map(
+        (item) => (
+            <CartItem
+                pizza={item}
+                key={`${item.id}${item.size}${item.dough}`}
+            />
+        )
+    );
+
     return (
         <div className="cart-list">
             <CartHeader />
             <ul>
-                <CartItem />
-                <CartItem />
-                <CartItem />
+                {elements}
                 <CartOrder />
             </ul>
             <div className="cart-list__nav">

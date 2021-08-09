@@ -1,15 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
 
-/* import CartEmpty from "../cart-empty/cart-empty"; */
+import CartEmpty from "../cart-empty/cart-empty";
 import CartList from "../cart-list/cart-list";
 import ErrorBoundry from "../error-boundry/error-boundry";
 
-const CartPage = () => {
-    return (
-        <ErrorBoundry>
-            <CartList />
-        </ErrorBoundry>
-    );
+const CartPage = ({ selectedPizzas }) => {
+    if (!selectedPizzas.length) {
+        return (
+            <ErrorBoundry>
+                <CartEmpty />
+            </ErrorBoundry>
+        );
+    } else {
+        return (
+            <ErrorBoundry>
+                <CartList selectedPizzas={selectedPizzas} />
+            </ErrorBoundry>
+        );
+    }
 };
 
-export default CartPage;
+const mapStateToProps = ({ selectedPizzas }) => {
+    return { selectedPizzas };
+};
+
+export default connect(mapStateToProps)(CartPage);

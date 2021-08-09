@@ -5,22 +5,21 @@ const initState = {
     error: null,
     filter: {
         type: "all",
-        name: "Все"
+        name: "Все",
     },
     dropdown: false,
-    sort: "популярные"
+    sort: "популярные",
 };
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
         case "PIZZAS_REQUESTED":
             return {
-                ...initState
+                ...initState,
             };
 
         case "PIZZAS_LOADED":
             return {
-                
                 ...initState,
                 pizzas: action.payload,
                 loading: false,
@@ -42,40 +41,44 @@ const reducer = (state = initState, action) => {
         case "DROPDOWN_ON":
             return {
                 ...state,
-                dropdown: true
+                dropdown: true,
             };
 
         case "DROPDOWN_OFF":
             return {
                 ...state,
-                dropdown: false
+                dropdown: false,
             };
 
         case "SORT_TYPE":
             return {
                 ...state,
-                sort: action.payload
+                sort: action.payload,
             };
 
         case "SET_PRICE":
             return {
                 ...state,
-                pizzas: action.payload
+                pizzas: action.payload,
             };
 
         case "SELECTING_PIZZA":
             return {
                 ...state,
-                selectedPizzas: action.payload
+                selectedPizzas: action.payload,
             };
 
         case "PIZZA_ADD":
             return {
                 ...state,
-                pizzas: action.payload
+                pizzas: action.payload,
             };
 
-        
+        case "CLEAR_CART":
+            return {
+                ...state,
+                selectedPizzas: []
+            };
 
         default:
             return state;
