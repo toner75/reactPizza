@@ -1,5 +1,4 @@
 const filterAndSort = (pizzas, filter, sort) => {
-
     const pizzaCategory = pizzas.filter(({ category }) => {
         return filter.type === "all" || filter.type === category;
     });
@@ -14,8 +13,11 @@ const filterAndSort = (pizzas, filter, sort) => {
             }
             return 0;
         };
-        const sortLowPrice = (a, b) => a.price - b.price;
-        const sortHighPrice = (a, b) => b.price - a.price;
+
+        const sortLowPrice = (a, b) =>
+            a.defPrice * a.defPrice - b.defPrice * b.defPrice;
+        const sortHighPrice = (a, b) =>
+            b.defPrice * b.defPrice - a.defPrice * a.defPrice;
         const sortPopular = (a, b) => b.rating - a.rating;
 
         let newPizzas;

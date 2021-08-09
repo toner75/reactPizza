@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HeaderCart from "../headers-cart/headers-cart";
 
+import { connect } from "react-redux";
+
 import "./header.css";
 import logoImg from "../../assets/img/logo.png";
 
@@ -24,4 +26,5 @@ const Header = () => {
     );
 };
 
-export default Header;
+
+export default connect()(Header);

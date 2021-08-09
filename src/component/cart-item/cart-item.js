@@ -5,7 +5,7 @@ import CartItemOrder from "../cart-item-order/cart-item-order";
 import "./cart-item.css";
 
 const CartItem = ({ pizza }) => {
-    const { name, size, dough, imgUrl, counter, price } = pizza;
+    const { name, size, dough, imgUrl} = pizza;
     return (
         <li>
             <div className="cart-item__divider" />
@@ -17,7 +17,7 @@ const CartItem = ({ pizza }) => {
                     size={size}
                     dough={dough}
                 />
-                <CartItemControl counter={counter} price={price} />
+                <CartItemControl pizza={pizza} />
             </div>
         </li>
     );

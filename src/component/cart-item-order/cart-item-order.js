@@ -12,7 +12,7 @@ const CartItemOrder = ({ name, size, dough, imgUrl }) => {
             <div className="cart-item__pizza">
                 <div className="cart-item__name">{name}</div>
                 <div className="cart-item__options">
-                    {dough}, {size} см
+                    {dough} тесто, {size} см
                 </div>
             </div>
         </div>

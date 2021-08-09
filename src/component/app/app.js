@@ -8,6 +8,7 @@ import CartPage from "../pages/cart-page";
 import "./app.css";
 
 const App = () => {
+    
     return (
         <div className="app__body">
             <Header />

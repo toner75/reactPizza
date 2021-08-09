@@ -44,9 +44,9 @@ const sortType = (type) => {
     };
 };
 
-const setPrice = (newArr) => {
+const pizzasUpdate = (newArr) => {
     return {
-        type: "SET_PRICE",
+        type: "PIZZAS_UPDATE",
         payload: newArr,
     };
 };
@@ -54,13 +54,6 @@ const setPrice = (newArr) => {
 const selectingPizza = (newArr) => {
     return {
         type: "SELECTING_PIZZA",
-        payload: newArr,
-    };
-};
-
-const pizzaAdd = (newArr) => {
-    return {
-        type: "PIZZA_ADD",
         payload: newArr,
     };
 };
@@ -79,8 +72,7 @@ export {
     dropdownOn,
     dropdownOff,
     sortType,
-    setPrice,
+    pizzasUpdate,
     selectingPizza,
-    pizzaAdd,
     clearCart,
 };

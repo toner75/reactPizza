@@ -24,6 +24,7 @@ class PizzaList extends Component {
                     return {
                         ...item,
                         calcPrice: multiplicatorPrice(price, sizes[0]),
+                        defPrice: multiplicatorPrice(price, sizes[0]),
                         selectedSize: sizes[0],
                         selectedDough: types[0],
                         pizzaAdd: false

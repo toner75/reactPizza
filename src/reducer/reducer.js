@@ -15,19 +15,19 @@ const reducer = (state = initState, action) => {
     switch (action.type) {
         case "PIZZAS_REQUESTED":
             return {
-                ...initState,
+                ...state,
             };
 
         case "PIZZAS_LOADED":
             return {
-                ...initState,
+                ...state,
                 pizzas: action.payload,
                 loading: false,
             };
 
         case "PIZZAS_ERROR":
             return {
-                ...initState,
+                ...state,
                 loading: false,
                 error: action.payload,
             };
@@ -56,7 +56,7 @@ const reducer = (state = initState, action) => {
                 sort: action.payload,
             };
 
-        case "SET_PRICE":
+        case "PIZZAS_UPDATE":
             return {
                 ...state,
                 pizzas: action.payload,

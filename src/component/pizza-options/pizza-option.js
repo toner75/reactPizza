@@ -5,8 +5,8 @@ import "./pizza-option.css";
 
 const PizzaOptions = ({ types, sizes }) => {
     const doughData = [
-        { name: "Тонкое", value: "thin" },
-        { name: "Традиционное", value: "tradition" },
+        { name: "Тонкое", value: "тонкое" },
+        { name: "Традиционное", value: "традиционное" },
     ];
 
     const sizeData = [

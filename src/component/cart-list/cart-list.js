@@ -7,21 +7,16 @@ import CartOrder from "../cart-order/cart-order";
 import "./cart-list.css";
 
 const CartList = ({ selectedPizzas }) => {
-    const elements = selectedPizzas.map(
-        (item) => (
-            <CartItem
-                pizza={item}
-                key={`${item.id}${item.size}${item.dough}`}
-            />
-        )
-    );
+    const elements = selectedPizzas.map((item) => (
+        <CartItem pizza={item} key={`${item.id}${item.size}${item.dough}`} />
+    ));
 
     return (
         <div className="cart-list">
             <CartHeader />
             <ul>
                 {elements}
-                <CartOrder />
+                <CartOrder selectedPizzas={selectedPizzas} />
             </ul>
             <div className="cart-list__nav">
                 <Link to="/">
