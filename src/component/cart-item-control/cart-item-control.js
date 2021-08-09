@@ -3,45 +3,59 @@ import { connect } from "react-redux";
 import { selectingPizza } from "../actions/actions";
 import "./cart-item-control.css";
 
-const onMinus = (pizza, selectedPizzas, action) => {
+const findIndex = (pizza, selectedPizzas) => {
     const { id, size, dough } = pizza;
     const index = `${id}${size}${dough}`;
 
-    const findedIndex = selectedPizzas.findIndex(
+    return selectedPizzas.findIndex(
         ({ id, size, dough }) => index === `${id}${size}${dough}`
     );
+};
 
+const deleteArrItem = (selectedPizzas, pizzaIndex) => {
+    return [
+        ...selectedPizzas.slice(0, pizzaIndex),
+        ...selectedPizzas.slice(pizzaIndex + 1),
+    ];
+};
+
+const changeArrItem = (selectedPizzas, pizzaIndex, newPizza) => {
+    return [
+        ...selectedPizzas.slice(0, pizzaIndex),
+        newPizza,
+        ...selectedPizzas.slice(pizzaIndex + 1),
+    ];
+};
+
+const onMinus = (pizza, selectedPizzas, action) => {
+    const pizzaIndex = findIndex(pizza, selectedPizzas);
     const newPizza = { ...pizza, counter: pizza.counter - 1 };
 
     if (newPizza.counter > 0) {
-        const newArr = [
-            ...selectedPizzas.slice(0, findedIndex),
-            newPizza,
-            ...selectedPizzas.slice(findedIndex + 1),
-        ];
+        const newArr = changeArrItem(selectedPizzas, pizzaIndex, newPizza);
         action(newArr);
     } else {
-        const newArr = [
-            ...selectedPizzas.slice(0, findedIndex),
-            ...selectedPizzas.slice(findedIndex + 1),
-        ];
+        const newArr = deleteArrItem(selectedPizzas, pizzaIndex);
         action(newArr);
     }
 };
 
+const onPlus = (pizza, selectedPizzas, selectingPizza) => {
+    const pizzaIndex = findIndex(pizza, selectedPizzas);
+
+    const newPizza = {
+        ...pizza,
+        counter: pizza.counter + 1,
+    };
+
+    const newArr = changeArrItem(selectedPizzas, pizzaIndex, newPizza);
+    selectingPizza(newArr);
+};
+
 const onDelete = (pizza, selectedPizzas, action) => {
-    const { id, size, dough } = pizza;
-    const index = `${id}${size}${dough}`;
-
-    const findedIndex = selectedPizzas.findIndex(
-        ({ id, size, dough }) => index === `${id}${size}${dough}`
-    );
-
-    const newArr = [
-        ...selectedPizzas.slice(0, findedIndex),
-        ...selectedPizzas.slice(findedIndex + 1),
-    ];
-
+    const pizzaIndex = findIndex(pizza, selectedPizzas);
+    
+    const newArr = deleteArrItem(selectedPizzas, pizzaIndex);
     action(newArr);
 };
 
@@ -63,30 +77,15 @@ const CartItemControl = ({ pizza, selectingPizza, selectedPizzas }) => {
                 <button
                     className="cart-item__btn"
                     onClick={() => {
-                        const { id, size, dough } = pizza;
-                        const index = `${id}${size}${dough}`;
-
-                        const findedIndex = selectedPizzas.findIndex(
-                            ({ id, size, dough }) =>
-                                index === `${id}${size}${dough}`
-                        );
-                        const newPizza = {
-                            ...pizza,
-                            counter: pizza.counter + 1,
-                        };
-                        const newArr = [
-                            ...selectedPizzas.slice(0, findedIndex),
-                            newPizza,
-                            ...selectedPizzas.slice(findedIndex + 1),
-                        ];
-
-                        selectingPizza(newArr);
+                        onPlus(pizza, selectedPizzas, selectingPizza);
                     }}>
                     <div>+</div>
                 </button>
             </div>
 
-            <div className="cart-item__price">{price * counter} р</div>
+            <div className="cart-item__price">
+                {Math.floor(price * counter * 100) / 100} р
+            </div>
 
             <button
                 className="cart-item__btn del"
