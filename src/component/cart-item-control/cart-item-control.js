@@ -54,7 +54,7 @@ const onPlus = (pizza, selectedPizzas, selectingPizza) => {
 
 const onDelete = (pizza, selectedPizzas, action) => {
     const pizzaIndex = findIndex(pizza, selectedPizzas);
-    
+
     const newArr = deleteArrItem(selectedPizzas, pizzaIndex);
     action(newArr);
 };
