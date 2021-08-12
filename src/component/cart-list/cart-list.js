@@ -12,7 +12,7 @@ const CartList = ({ selectedPizzas }) => {
     ));
 
     return (
-        <div className="cart-list">
+        <div className="cart-list animate__animated animate__fadeIn">
             <CartHeader />
             <ul>
                 {elements}

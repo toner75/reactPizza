@@ -7,7 +7,7 @@ import cartEmptyImg from "../../assets/img/cart-empty.png";
 
 const CartEmpty = () => {
     return (
-        <div className="cart-empty">
+        <div className="cart-empty animate__animated animate__fadeIn">
             <div className="cart-empty__title">
                 <span>Корзина пустая</span>
                 <img alt="smile" src={cartSmileImg} />
