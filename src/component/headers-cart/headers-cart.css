@@ -39,4 +39,16 @@
     margin-right: 10px;
 }
 
+@media(max-width: 500px) {
+    .headers-cart {
+        font-size: 14px;
+    }
 
+    .headers-cart__price {
+        padding-left: 5px;
+    }
+    
+    .headers-cart__counter {
+        padding-right: 5px;
+    }
+}

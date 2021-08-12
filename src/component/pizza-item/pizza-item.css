@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     max-width: 280px;
+    height: 480px;
 }
+
+
 
 .pizza-item h2 {
     margin-bottom: 20px;

@@ -1,5 +1,5 @@
 const getPizzas = async () => {
-    const res = await fetch("http://localhost:3000/db.json");
+    const res = await fetch("https://api.npoint.io/a1fa631b26cab4b42cf0");
     if (!res.ok) {
         throw new Error("could not fetch");
     }
