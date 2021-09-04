@@ -9,13 +9,13 @@ Features:
 4) The pizza's price depends on the size and type of pizza.
 5) The multifunctional cart.
 6) Markup is valid on 100%.
-7) Google speedtest: Mobile - 89, descktop - 98 
+7) Google speedtest: Mobile - 89, descktop - 98. 
 8) The site is fully adaptive for mobile device.
 
 Used:
 1) React,
 2) Redux,
-3) Pure CSS
-4) Data fetch from external database
+3) Pure CSS,
+4) Data fetch from external database.
 
 Link: https://reactpizza1234.000webhostapp.com/
