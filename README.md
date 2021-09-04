@@ -1,6 +1,6 @@
 # reactPizza
 
-The React Pizza is SPA on React and Redux.
+The React Pizza is SPA on React and Redux for pizzeria.
 
 Features:
 1) Filtering by category.
