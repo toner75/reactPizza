@@ -8,9 +8,9 @@ Features:
 3) Pizzas are from external database.
 4) The pizza's price depends on the size and type of pizza.
 5) The multifunctional cart.
-
 6) Markup is valid on 100%.
 7) Google speedtest: Mobile - 89, descktop - 98 
+8) The site is fully adaptive for mobile device.
 
 Used:
 1) React,
